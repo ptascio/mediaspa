@@ -1,6 +1,7 @@
 
 var monthlys = document.getElementsByName("Monthly");
 var totalCost = document.getElementById("totalCost");
+var calendar = document.getElementById("calendar");
 var numReg = /^\d+$/;
 
 var rooms = "";
@@ -31,8 +32,10 @@ function isMonthly(){
 	}
 	
 	if (rentMonthly){
+		calendar.setAttribute("style", "display: block;");
 		monthlyCost(rooms);
 	}else {
+		calendar.setAttribute("style", "display: none;");
 		dailyCost(rooms);
 		
 	}
