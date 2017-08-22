@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mediaspa</title>
+  </head>
+  <body>
+
+<h1>Rooms For Rent</h1>
+
+<form >
+	Price: <input type="text" name="country" value="$150" readonly><br>
+	
+	Number of Rooms: <input id="roomQty" type="text" name="rooms" 
+	
+	onkeyup="getRooms()" 
+	placeholder="Enter Number of Rooms"><br>
+	
+
+	Pay Monthly?:<br>
+	<input id="monthly" type="radio" name="Monthly" value="true" checked="checked" 
+	onchange="isMonthly()"/> Yes<br>
+  	<input id="daily" type="radio" name="Monthly" value="" onchange="isMonthly()" /> No<br>
+</form>
+
+<div>
+	<p>Total Cost:</p>
+	<p id="totalCost"></p>
+</div>
+    <script type="text/javascript" src="./main.js">
+    </script>
+  </body>
+</html>
