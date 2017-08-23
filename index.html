@@ -16,16 +16,15 @@
 	onkeyup="getRooms()"
 	placeholder="Enter Number of Rooms"><br>
 
-
-	Pay Monthly?:<br>
-	<input id="monthly" type="radio" name="Monthly" value="true" checked="checked"
+	Pay Monthly?<br>
+	<input id="monthly" type="radio" name="Monthly" value="true"
 	onchange="isMonthly()"/> Yes<br>
-  	<div id="calendar">
+  	<div id="calendar" style="display: none;">
   		<span>Start Date:<input type="date" id="today" onchange="increaseEndDate()"></span>
       <span>End Date:<input type="date" id="tomorrow"></span><br>
       <input type="button" id="totalDaysCost" name="" value="Calculate My Cost" onclick="calculateMonthlyCost()">
   	</div>
-  	<input id="daily" type="radio" name="Monthly" value="" onchange="isMonthly()" /> No<br>
+  	<input id="daily" type="radio" name="Monthly" value="" onchange="isMonthly()" checked="checked"/> No<br>
 </form>
 
 <div class="" id="actualCost" style="display: none;">
@@ -34,7 +33,7 @@
 </div>
 
 <div>
-	<p>Total Cost Per Night Per Room:</p>
+	<p>Total Cost Per Night:</p>
 	<p id="totalCost"></p>
 </div>
     <script type="text/javascript" src="./main.js">
