@@ -15,23 +15,21 @@ function disableRadios(rqty){
 		for (var i = 0, length = monthlys.length; i < length; i++) {
 			monthlys[i].setAttribute("disabled", true);
 		}
-	}else {
+	}else if(numReg.test(rqty.value)) {
 		for (var j = 0, length = monthlys.length; j < length; j++) {
 			monthlys[j].disabled = false;
 		}
 	}
-	console.log(monthlys);
 }
 
 function getRooms(){
-	var roomQty = document.getElementById("roomQty");
+	roomQty = document.getElementById("roomQty");
 	disableRadios(roomQty);
 	rooms = roomQty.value;
 	if (numReg.test(rooms)){
 		isMonthly();
 	}else {
 		totalCost.innerHTML = "Please the Amount of Rooms you'd like to rent";
-		clearForm();
 	}
 }
 
