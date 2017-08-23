@@ -10,18 +10,19 @@
 
 <form >
 	Price: <input type="text" name="country" value="$150" readonly><br>
-	
-	Number of Rooms: <input id="roomQty" type="text" name="rooms" 
-	
-	onkeyup="getRooms()" 
+
+	Number of Rooms: <input id="roomQty" type="text" name="rooms"
+
+	onkeyup="getRooms()"
 	placeholder="Enter Number of Rooms"><br>
-	
+
 
 	Pay Monthly?:<br>
-	<input id="monthly" type="radio" name="Monthly" value="true" checked="checked" 
+	<input id="monthly" type="radio" name="Monthly" value="true" checked="checked"
 	onchange="isMonthly()"/> Yes<br>
 	<div id="calendar">
-		<span>Start Date:<input type="date"></span><span>End Date:<input type="date"></span><br>
+		<span>Start Date:<input type="date" id="today"></span>
+    <span>End Date:<input type="date" id="tomorrow"></span><br>
 		<input type="button" name="Submit">
 	</div>
   	<input id="daily" type="radio" name="Monthly" value="" onchange="isMonthly()" /> No<br>
