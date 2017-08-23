@@ -21,12 +21,21 @@ function disableRadios(rqty){
 	}
 }
 
+function disableButton(rqty){
+	if (rqty.value === ""){
+		document.getElementById("totalDaysCost").disabled = true;
+	}else if (numReg.test(rqty.value)){
+		document.getElementById("totalDaysCost").disabled = false;
+	}
+}
+
 //grabs the number user enters in the room input
 //checks it against a regex that only digits have been entered
 //protects against all chars that are not digits
 function getRooms(){
 	roomQty = document.getElementById("roomQty");
 	disableRadios(roomQty);
+	disableButton(roomQty);
 	rooms = roomQty.value;
 	if (numReg.test(rooms)){
 		isMonthly();
@@ -47,6 +56,7 @@ function clearForm(){
 function isMonthly(){
 	roomQty = document.getElementById("roomQty");
 	disableRadios(roomQty);
+	disableButton(roomQty);
 	for (var i = 0, length = monthlys.length; i < length; i++) {
     	if (monthlys[i].checked) {
         	rentMonthly = monthlys[i].value;
@@ -157,6 +167,6 @@ function increaseEndDate(){
 }
 
 
-
+disableButton(roomQty);
 disableRadios(roomQty);
 setTodaysDate();
