@@ -34,7 +34,7 @@ function getRooms(){
 }
 
 function clearForm(){
-	oomQty = document.getElementById("roomQty");
+	roomQty = document.getElementById("roomQty");
 	roomQty.value = "";
 }
 
@@ -52,6 +52,7 @@ function isMonthly(){
 		calendar.setAttribute("style", "display: block;");
 		monthlyCost(rooms);
 	}else {
+		document.getElementById("actualCost").setAttribute("style", "display: none;");
 		calendar.setAttribute("style", "display: none;");
 		dailyCost(rooms);
 
@@ -59,9 +60,21 @@ function isMonthly(){
 }
 
 
-function monthlyCost(r){
+function monthlyCost(r, days){
 	rooms = parseInt(r);
-	totalCost.innerHTML = ((150 * rooms)/12);
+	var costPerNight = ((150 * rooms)/12);
+	var costOfAllNights;
+	totalCost.innerHTML = costPerNight;
+	if (days){
+		costOfAllNights = parseFloat(costPerNight) * days;
+		revealTotalCosts(costOfAllNights);
+	}
+}
+
+function revealTotalCosts(total){
+	var ttl = document.getElementById("totalStayCost");
+	ttl.innerText = total;
+	document.getElementById("actualCost").setAttribute("style", "display: block;");
 }
 
 function dailyCost(r){
@@ -99,11 +112,27 @@ function setTodaysDate(){
 	tomo.setAttribute("min", dates[1]);
 	today.value = dates[0];
 	tomo.value = dates[1];
-	calculateMonthlyCost(dates);
 }
 
-function calculateMonthlyCost(dates){
-
+function calculateMonthlyCost(){
+	var oneDay = 24*60*60*1000;
+	var startDate = document.getElementById("today").value;
+	var endDate = document.getElementById("tomorrow").value;
+	startDate = dateToJSDate(startDate);
+	endDate = dateToJSDate(endDate);
+	var totalDays = Math.round(Math.abs((startDate.getTime() - endDate.getTime())/(oneDay)));
+	roomQty = document.getElementById("roomQty");
+	monthlyCost(roomQty.value, totalDays);
 }
+
+function dateToJSDate(dte){
+	dte=dte.split("-");
+	var newStartDate=dte[0]+"/"+dte[1]+"/"+dte[2];
+	var newDte = new Date(dte);
+	return newDte;
+}
+
+
+
 disableRadios(roomQty);
 setTodaysDate();

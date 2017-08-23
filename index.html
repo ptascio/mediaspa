@@ -20,15 +20,21 @@
 	Pay Monthly?:<br>
 	<input id="monthly" type="radio" name="Monthly" value="true" checked="checked"
 	onchange="isMonthly()"/> Yes<br>
-	<div id="calendar">
-		<span>Start Date:<input type="date" id="today"></span>
-    <span>End Date:<input type="date" id="tomorrow"></span><br>
-	</div>
+  	<div id="calendar">
+  		<span>Start Date:<input type="date" id="today"></span>
+      <span>End Date:<input type="date" id="tomorrow"></span><br>
+      <input type="button" name="" value="Calculate My Cost" onclick="calculateMonthlyCost()">
+  	</div>
   	<input id="daily" type="radio" name="Monthly" value="" onchange="isMonthly()" /> No<br>
 </form>
 
+<div class="" id="actualCost" style="display: none;">
+  <p>Based on the dates you've chosen, here is the total cost of your stay:</p>
+  <p id="totalStayCost"></p>
+</div>
+
 <div>
-	<p>Total Cost:</p>
+	<p>Total Cost Per Night Per Room:</p>
 	<p id="totalCost"></p>
 </div>
     <script type="text/javascript" src="./main.js">
